@@ -69,10 +69,9 @@ const RootLayout = () => {
           }}
         />
         <Stack.Screen
-          name="user/[id]"
+          name="user"
           options={{
-            title: "User Profile",
-            presentation: 'card',
+            headerShown: false,
           }}
         />
       </Stack>

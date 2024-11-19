@@ -20,12 +20,12 @@ interface VerificationStatus {
 }
 
 export default function UserProfile() {
-  const { userId } = useLocalSearchParams();
+  const { id } = useLocalSearchParams();
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [verifications, setVerifications] = useState<VerificationStatus[]>([]);
 
   useEffect(() => {
-    // Mock data based on userId
+    // Mock data based on id
     const mockUsers: { [key: string]: UserProfile } = {
       'user123': {
         id: 'user123',
@@ -43,10 +43,9 @@ export default function UserProfile() {
         joinDate: new Date('2024-02-01'),
         totalClaims: 5
       },
-      // Add more mock users as needed
     };
 
-    setProfile(mockUsers[userId as string] || mockUsers['user123']);
+    setProfile(mockUsers[id as string] || mockUsers['user123']);
 
     setVerifications([
       {
@@ -68,7 +67,7 @@ export default function UserProfile() {
         details: '500+ contributions this year'
       }
     ]);
-  }, [userId]);
+  }, [id]);
 
   if (!profile) return null;
 
