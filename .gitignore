@@ -38,3 +38,7 @@ yarn-error.*
 app-example
 
 .cursorrules
+
+# Never commit these files
+.env
+google-services.json

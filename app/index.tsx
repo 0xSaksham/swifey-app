@@ -1,113 +1,45 @@
 import { Text, View, StyleSheet, Image, Pressable } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { Link } from "expo-router";
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { VerifyAndStakeButton } from './components/VerifyAndStakeButton';
 
-export default function Index() {
+export default function App() {
   return (
-    <View style={styles.container}>
-      <StatusBar style="light" />
+    <SafeAreaProvider>
+      <View style={styles.container}>
+        <View style={styles.main}>
+          <Text style={styles.title}>Verify & Stake</Text>
+          <Text style={styles.subtitle}>Verify your Twitter account to continue</Text>
 
-      <View style={styles.header}>
-        <Text style={styles.title}>Swifey</Text>
-        <Text style={styles.subtitle}>Your Decentralized Social Identity</Text>
-      </View>
+          <VerifyAndStakeButton />
 
-      <View style={styles.content}>
-        <Text style={styles.description}>
-          Connect, share, and own your social presence with the power of Reclaim Protocol
-        </Text>
-
-        <View style={styles.buttonContainer}>
-          <Link href="/profile" asChild>
-            <Pressable style={styles.button}>
-              <Text style={styles.buttonText}>Create Profile</Text>
-            </Pressable>
-          </Link>
-
-          <Link href="/explore" asChild>
-            <Pressable style={styles.buttonOutline}>
-              <Text style={styles.buttonOutlineText}>Explore</Text>
-            </Pressable>
-          </Link>
+          {/* Remove LinkedIn section */}
         </View>
-
-        <Text style={styles.footer}>
-          Powered by Reclaim Protocol
-        </Text>
       </View>
-    </View>
+    </SafeAreaProvider>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#1a1a1a",
+    backgroundColor: '#fff',
   },
-  header: {
+  main: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    paddingTop: 60,
+    padding: 20,
+    maxWidth: 960,
+    marginHorizontal: 'auto',
   },
   title: {
-    fontSize: 48,
-    fontWeight: "bold",
-    color: "#ffffff",
+    fontSize: 24,
+    fontWeight: 'bold',
     marginBottom: 8,
   },
   subtitle: {
-    fontSize: 18,
-    color: "#9f9f9f",
-    textAlign: "center",
-  },
-  content: {
-    flex: 2,
-    alignItems: "center",
-    paddingHorizontal: 24,
-  },
-  description: {
     fontSize: 16,
-    color: "#ffffff",
-    textAlign: "center",
-    marginBottom: 40,
-    lineHeight: 24,
-  },
-  buttonContainer: {
-    gap: 16,
-    width: "100%",
-    maxWidth: 300,
-  },
-  button: {
-    backgroundColor: "#4A90E2",
-    paddingVertical: 16,
-    paddingHorizontal: 32,
-    borderRadius: 30,
-    alignItems: "center",
-  },
-  buttonText: {
-    color: "#ffffff",
-    fontSize: 18,
-    fontWeight: "600",
-  },
-  buttonOutline: {
-    backgroundColor: "transparent",
-    paddingVertical: 16,
-    paddingHorizontal: 32,
-    borderRadius: 30,
-    alignItems: "center",
-    borderWidth: 2,
-    borderColor: "#4A90E2",
-  },
-  buttonOutlineText: {
-    color: "#4A90E2",
-    fontSize: 18,
-    fontWeight: "600",
-  },
-  footer: {
-    position: "absolute",
-    bottom: 40,
-    color: "#9f9f9f",
-    fontSize: 14,
+    color: '#666',
+    marginBottom: 24,
   },
 });
