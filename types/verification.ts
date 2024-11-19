@@ -4,6 +4,7 @@ export interface VerificationStatus {
   provider: 'linkedin' | 'twitter';
   verifiedAt: Date;
   proofId: string;
+  fieldName: string;
 }
 
 export interface VerificationRequest {

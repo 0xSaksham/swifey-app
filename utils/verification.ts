@@ -1,5 +1,5 @@
 import { VerificationStatus, VerificationResult } from "../types/verification";
-import { RECLAIM_CONFIG } from "../constants/Config";
+import { RECLAIM_CONFIG } from "../app/constants/Config";
 
 /**
  * Formats a verification date to a readable string

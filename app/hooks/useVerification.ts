@@ -1,42 +1,48 @@
-import { useState } from 'react';
-import { reclaimService } from '../services/reclaimService';
-import type { VerificationRequest, VerificationResult } from '../types/verification';
+import { useState } from "react";
+import reclaimService from "../services/reclaimService";
+import type {
+  VerificationRequest,
+  VerificationResult,
+} from "../../types/verification";
 
 export function useVerification() {
   const [isVerifying, setIsVerifying] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const startVerification = async (request: VerificationRequest): Promise<VerificationResult> => {
+  const startVerification = async (
+    request: VerificationRequest
+  ): Promise<VerificationResult> => {
     setIsVerifying(true);
     setError(null);
 
     try {
-      const provider = request.provider.toUpperCase() as 'TWITTER' | 'LINKEDIN';
-
+      const provider = request.provider.toUpperCase() as "TWITTER" | "LINKEDIN";
+      const service = await reclaimService;
       return new Promise((resolve) => {
-        reclaimService.startVerification(
-          provider,
-          (proof) => {
+        service.startVerification(
+          (proof: string | { claimData: { context: string } }) => {
             resolve({
               success: true,
-              proofId: typeof proof === 'string' ? proof : proof?.claimData.context
+              proofId:
+                typeof proof === "string" ? proof : proof?.claimData.context,
             });
           },
-          (error) => {
+          (error: Error) => {
             setError(error.message);
             resolve({
               success: false,
-              error: error.message
+              error: error.message,
             });
           }
         );
       });
     } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : 'Verification failed';
+      const errorMessage =
+        err instanceof Error ? err.message : "Verification failed";
       setError(errorMessage);
       return {
         success: false,
-        error: errorMessage
+        error: errorMessage,
       };
     } finally {
       setIsVerifying(false);
@@ -46,6 +52,8 @@ export function useVerification() {
   return {
     isVerifying,
     error,
-    startVerification
+    startVerification,
   };
 }
+
+export default useVerification;

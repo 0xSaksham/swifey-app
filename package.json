@@ -21,6 +21,7 @@
     "@react-navigation/bottom-tabs": "^7.0.0",
     "@react-navigation/native": "^7.0.0",
     "@reclaimprotocol/reactnative-sdk": "^2.1.1",
+    "@reclaimprotocol/reclaim-client-sdk": "^0.0.12",
     "@reclaimprotocol/reclaim-sdk": "^6.0.0",
     "expo": "~52.0.7",
     "expo-blur": "~14.0.1",

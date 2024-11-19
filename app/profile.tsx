@@ -3,12 +3,12 @@ import { Stack } from 'expo-router';
 import { useState } from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Picker } from '@react-native-picker/picker';
-import { ProfileVerification } from './components/ProfileVerification';
+import ProfileVerification from './components/ProfileVerification';
 
 interface VerificationStatus {
   field: string;
   isVerified: boolean;
-  provider: 'linkedin' | 'twitter';
+  provider: 'linkedin' | 'twitter' | 'x';
   verifiedAt?: Date;
 }
 
@@ -24,7 +24,7 @@ const Profile = () => {
   const [verifications, setVerifications] = useState<VerificationStatus[]>([]);
   const [showDatePicker, setShowDatePicker] = useState(false);
 
-  const handleVerificationComplete = (field: string, provider: 'linkedin' | 'twitter', result: VerificationStatus) => {
+  const handleVerificationComplete = (field: string, provider: 'linkedin' | 'twitter' | 'x', result: VerificationStatus) => {
     if (result.isVerified) {
       setVerifications(prev => [
         ...prev.filter(v => v.field !== field),
@@ -55,14 +55,24 @@ const Profile = () => {
             placeholderTextColor="#666666"
           />
           {!isFieldVerified('name') && profile.name && (
-            <ProfileVerification
-              fieldName="name"
-              value={profile.name}
-              provider="linkedin"
-              onVerificationComplete={(result) =>
-                handleVerificationComplete('name', 'linkedin', result)
-              }
-            />
+            <>
+              <ProfileVerification
+                fieldName="name"
+                value={profile.name}
+                provider="linkedin"
+                onVerificationComplete={(result) =>
+                  handleVerificationComplete('name', 'linkedin', result)
+                }
+              />
+              <ProfileVerification
+                fieldName="name"
+                value={profile.name}
+                provider="twitter"
+                onVerificationComplete={(result) =>
+                  handleVerificationComplete('name', 'x', result)
+                }
+              />
+            </>
           )}
           {isFieldVerified('name') && (
             <Text style={styles.verifiedBadge}>✓ Verified</Text>
@@ -92,7 +102,7 @@ const Profile = () => {
               fieldName="dateOfBirth"
               value={profile.dateOfBirth.toISOString().split('T')[0]}
               provider="linkedin"
-              onVerificationComplete={(result) =>
+              onVerificationComplete={(result: VerificationStatus) =>
                 handleVerificationComplete('dateOfBirth', 'linkedin', result)
               }
             />

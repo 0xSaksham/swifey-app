@@ -1,39 +1,45 @@
-import { StyleSheet, Text, View, Pressable, ActivityIndicator } from 'react-native';
-import { useVerification } from '../hooks/useVerification';
-import { VerificationBadge } from './VerificationBadge';
-import { VerificationStatus } from '../types/verification';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Pressable,
+  ActivityIndicator,
+} from "react-native";
+import { useVerification } from "../hooks/useVerification";
+import VerificationBadge from "./VerificationBadge";
+import { VerificationStatus } from "../../types/verification";
 
 interface ProfileVerificationProps {
   fieldName: string;
   value: string;
-  provider: 'linkedin' | 'twitter';
+  provider: "linkedin" | "twitter";
   status?: VerificationStatus;
   onVerificationComplete: (result: VerificationStatus) => void;
 }
 
-export function ProfileVerification({
+const ProfileVerification = ({
   fieldName,
   value,
   provider,
   status,
-  onVerificationComplete
-}: ProfileVerificationProps) {
-  const { isVerifying, error, startVerification } = useVerification();
+  onVerificationComplete,
+}: ProfileVerificationProps) => {
+  const { startVerification, isVerifying, error } = useVerification();
 
   const handleVerification = async () => {
     const result = await startVerification({
       fieldName,
       value,
-      provider
+      provider,
     });
-
     if (result.success && result.proofId) {
       onVerificationComplete({
         field: fieldName,
+        fieldName, // Added fieldName to match VerificationStatus type
         isVerified: true,
         provider,
         verifiedAt: new Date(),
-        proofId: result.proofId
+        proofId: result.proofId,
       });
     }
   };
@@ -52,40 +58,40 @@ export function ProfileVerification({
             <ActivityIndicator color="#ffffff" />
           ) : (
             <Text style={styles.buttonText}>
-              Verify with {provider === 'linkedin' ? 'LinkedIn' : 'Twitter'}
+              Verify with {provider === "linkedin" ? "LinkedIn" : "Twitter"}
             </Text>
           )}
         </Pressable>
       )}
-      {error && (
-        <Text style={styles.errorText}>{error}</Text>
-      )}
+      {error && <Text style={styles.errorText}>{error}</Text>}
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     marginTop: 8,
   },
   button: {
-    backgroundColor: '#4A90E2',
+    backgroundColor: "#4A90E2",
     paddingVertical: 8,
     paddingHorizontal: 16,
     borderRadius: 8,
-    alignItems: 'center',
+    alignItems: "center",
   },
   buttonDisabled: {
     opacity: 0.6,
   },
   buttonText: {
-    color: '#ffffff',
+    color: "#ffffff",
     fontSize: 14,
-    fontWeight: '600',
+    fontWeight: "600",
   },
   errorText: {
-    color: '#ff0000',
+    color: "#ff0000",
     fontSize: 12,
     marginTop: 4,
   },
 });
+
+export default ProfileVerification;
