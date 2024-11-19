@@ -1,39 +1,90 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
-import 'react-native-reanimated';
+import { StyleSheet, View, Platform, SafeAreaView } from 'react-native'
+import { Stack } from 'expo-router'
+import { StatusBar } from 'expo-status-bar'
 
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
-
-export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
-
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
-
-  if (!loaded) {
-    return null;
+// Define default styles and theme colors that can be used across the app
+export const theme = {
+  colors: {
+    primary: '#4A90E2',
+    background: '#1a1a1a',
+    card: '#2a2a2a',
+    text: '#ffffff',
+    textSecondary: '#9f9f9f',
+    border: '#333333',
+  },
+  spacing: {
+    xs: 4,
+    sm: 8,
+    md: 16,
+    lg: 24,
+    xl: 32,
+  },
+  borderRadius: {
+    sm: 8,
+    md: 12,
+    lg: 20,
+    xl: 28,
   }
-
-  return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
-  );
 }
+
+const RootLayout = () => {
+  return (
+    <SafeAreaView style={styles.container}>
+      <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
+      <Stack
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: theme.colors.background,
+          },
+          headerTintColor: theme.colors.text,
+          headerTitleStyle: {
+            fontWeight: '600',
+          },
+          contentStyle: {
+            backgroundColor: theme.colors.background,
+          },
+          animation: 'slide_from_right',
+          headerShadowVisible: false,
+          statusBarStyle: 'dark',
+        }}
+      >
+        <Stack.Screen
+          name="index"
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="profile"
+          options={{
+            title: "Profile",
+            presentation: 'card',
+          }}
+        />
+        <Stack.Screen
+          name="explore"
+          options={{
+            title: "Explore",
+            presentation: 'card',
+          }}
+        />
+        <Stack.Screen
+          name="user/[id]"
+          options={{
+            title: "User Profile",
+            presentation: 'card',
+          }}
+        />
+      </Stack>
+    </SafeAreaView>
+  )
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: theme.colors.background,
+  },
+})
+
+export default RootLayout
