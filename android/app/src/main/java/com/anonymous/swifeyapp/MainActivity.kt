@@ -1,4 +1,4 @@
-package com.anonymous.stakingwifeyapp
+package com.anonymous.swifeyapp
 import expo.modules.splashscreen.SplashScreenManager
 
 import android.os.Build

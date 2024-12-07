@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "stakingwifey",
-    "slug": "stakingwifeyapp",
-    "scheme": "stakingwifeyapp",
+    "name": "swifey",
+    "slug": "swifeyapp",
+    "scheme": "swifeyapp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",

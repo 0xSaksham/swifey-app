@@ -1,4 +1,4 @@
-package com.anonymous.stakingwifeyapp
+package com.anonymous.swifeyapp
 
 import android.app.Application
 import android.content.res.Configuration

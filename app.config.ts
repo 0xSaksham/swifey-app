@@ -1,7 +1,7 @@
 export default {
   expo: {
-    name: "stakingwifeyapp",
-    scheme: "stakingwifeyapp",
+    name: "swifeyapp",
+    scheme: "swifeyapp",
     // ... other expo config
     extra: {
       RECLAIM_APP_ID: process.env.RECLAIM_APP_ID,
@@ -20,7 +20,7 @@ export default {
       },
     },
     android: {
-      package: "com.anonymous.stakingwifeyapp",
+      package: "com.anonymous.swifeyapp",
     },
   },
 };

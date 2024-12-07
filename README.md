@@ -1,6 +1,6 @@
-# stakingwifey - Your Decentralized Social Identity
+# swifey - Your Decentralized Social Identity
 
-stakingwifey is a modern mobile application built with React Native and Expo that enables users to manage their decentralized social identity using the Reclaim Protocol. The app provides a seamless way to verify and share credentials while maintaining privacy and security.
+swifey is a modern mobile application built with React Native and Expo that enables users to manage their decentralized social identity using the Reclaim Protocol. The app provides a seamless way to verify and share credentials while maintaining privacy and security.
 
 ## Features
 
