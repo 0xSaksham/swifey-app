@@ -17,7 +17,7 @@ interface ConnectionContextType {
 
 const ConnectionContext = createContext<ConnectionContextType | undefined>(undefined);
 
-export function ConnectionProvider({ children }: { children: React.ReactNode }) {
+export default function ConnectionProvider({ children }: { children: React.ReactNode }) {
   const [connections, setConnections] = useState<Connection[]>([]);
 
   const addConnection = (connection: Connection) => {
@@ -37,7 +37,7 @@ export function ConnectionProvider({ children }: { children: React.ReactNode }) 
     setConnections(prev =>
       prev.map(conn => {
         if ((conn.userId === userId && conn.connectedUserId === connectedUserId) ||
-            (conn.userId === connectedUserId && conn.connectedUserId === userId)) {
+          (conn.userId === connectedUserId && conn.connectedUserId === userId)) {
           return { ...conn, chatHistoryEnabled: enabled };
         }
         return conn;
@@ -65,4 +65,4 @@ export function useConnections() {
     throw new Error('useConnections must be used within a ConnectionProvider');
   }
   return context;
-} 
+}

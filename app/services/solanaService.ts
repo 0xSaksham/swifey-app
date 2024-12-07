@@ -1,15 +1,21 @@
-import { Connection, PublicKey, Transaction, SystemProgram, LAMPORTS_PER_SOL } from '@solana/web3.js';
+import {
+  Connection,
+  PublicKey,
+  Transaction,
+  SystemProgram,
+  LAMPORTS_PER_SOL,
+} from "@solana/web3.js";
 
 const SOLANA_NETWORK = "devnet";
 const STAKE_AMOUNT = 0.2 * LAMPORTS_PER_SOL; // 0.2 SOL in lamports
 
-export class SolanaService {
+export default class SolanaService {
   private connection: Connection;
 
   constructor() {
     this.connection = new Connection(
       `https://api.${SOLANA_NETWORK}.solana.com`,
-      'confirmed'
+      "confirmed"
     );
   }
 
@@ -36,4 +42,4 @@ export class SolanaService {
 
     return transaction;
   }
-} 
+}

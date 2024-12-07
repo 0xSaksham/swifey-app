@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Switch } from 'react-native';
-import { Button } from './Button';
-import { SolanaService } from '../services/solanaService';
+import Button from './Button';
+import SolanaService from '../services/solanaService';
 import { useConnections } from '../context/ConnectionContext';
 
 interface ConnectionRequestProps {
@@ -10,7 +10,7 @@ interface ConnectionRequestProps {
   onClose: () => void;
 }
 
-export function ConnectionRequest({ targetUserId, targetUserName, onClose }: ConnectionRequestProps) {
+export default function ConnectionRequest({ targetUserId, targetUserName, onClose }: ConnectionRequestProps) {
   const [keepChatHistory, setKeepChatHistory] = useState(true);
   const [isStaking, setIsStaking] = useState(false);
   const { addConnection } = useConnections();
@@ -98,4 +98,4 @@ const styles = StyleSheet.create({
   cancelButtonText: {
     color: '#007AFF',
   },
-}); 
+});

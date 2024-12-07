@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Button } from '../components/Button';
+import  Button  from '../components/Button';
 import { Picker } from '@react-native-picker/picker';
-import { UserProfile } from '../types/user';
+import { UserProfile } from '../../types/user';
 import { ReclaimProofRequest } from '@reclaimprotocol/reactnative-sdk';
-import { ConnectionButton } from '../components/ConnectionButton';
-import { VerifyAndStakeButton } from '../components/VerifyAndStakeButton';
+import ConnectionButton  from '../components/ConnectionButton';
+import VerifyAndStakeButton from '../components/VerifyAndStakeButton';
 
 const APP_ID = '0x77AAf2b683c046fa72B33c24135a6D768B3316e5';
 const APP_SECRET = 'YOUR_APPLICATION_SECRET';
@@ -26,7 +26,7 @@ const MOCK_USERS = [
   }
 ];
 
-export function ProfileCreation() {
+export default function ProfileCreation() {
   const [profile, setProfile] = useState<Partial<UserProfile>>({
     gender: 'other',
     verifiedFields: [],

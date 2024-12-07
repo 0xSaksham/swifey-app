@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Button } from './Button';
-import { StakingModal } from './StakingModal';
+import Button from './Button';
+import StakingModal from './StakingModal';
 
 interface ConnectionButtonProps {
   targetUserId: string;
@@ -8,7 +8,7 @@ interface ConnectionButtonProps {
   onConnectionComplete?: () => void;
 }
 
-export function ConnectionButton({
+export default function ConnectionButton({
   targetUserId,
   targetWallet,
   onConnectionComplete
@@ -36,4 +36,4 @@ export function ConnectionButton({
       />
     </>
   );
-} 
+}

@@ -2,19 +2,19 @@ export interface UserProfile {
   id: string;
   name: string;
   dateOfBirth: string;
-  gender: 'male' | 'female' | 'other';
+  gender: Gender;
   graduatedFrom: string;
   currentlyWorking: string;
   isVerified: boolean;
   verifiedFields: string[];
   walletAddress?: string;
-  reclaimId?: string;  // For Reclaim Protocol verification
+  reclaimId?: string; // For Reclaim Protocol verification
 }
 
 export interface VerificationStatus {
   field: string;
-  status: 'pending' | 'verified' | 'failed';
+  status: "pending" | "verified" | "failed";
   timestamp?: number;
 }
 
-export type Gender = 'male' | 'female' | 'other'; 
+export type Gender = "male" | "female" | "other";

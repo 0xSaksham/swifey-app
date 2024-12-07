@@ -1,6 +1,7 @@
 export default {
   expo: {
-    name: "your-app-name",
+    name: "stakingwifeyapp",
+    scheme: "stakingwifeyapp",
     // ... other expo config
     extra: {
       RECLAIM_APP_ID: process.env.RECLAIM_APP_ID,
@@ -14,6 +15,12 @@ export default {
       FIREBASE_STORAGE_BUCKET: process.env.FIREBASE_STORAGE_BUCKET,
       FIREBASE_MESSAGING_SENDER_ID: process.env.FIREBASE_MESSAGING_SENDER_ID,
       FIREBASE_APP_ID: process.env.FIREBASE_APP_ID,
+      eas: {
+        projectId: "c43d2b0f-a9ec-4ac3-bb6e-364561ce501b",
+      },
+    },
+    android: {
+      package: "com.anonymous.stakingwifeyapp",
     },
   },
 };

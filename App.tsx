@@ -1,9 +1,10 @@
+import './polyfills';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { ProfileCreation } from './app/screens/ProfileCreation';
+import ProfileCreation from './app/screens/ProfileCreation';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { ConnectionProvider } from './app/context/ConnectionContext';
-import { WalletProvider } from './app/context/WalletContext';
+import ConnectionProvider from './app/context/ConnectionContext';
+import WalletProvider from './app/context/WalletContext';
 
 const Stack = createNativeStackNavigator();
 

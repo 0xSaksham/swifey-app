@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
-import { Button } from './Button';
+import Button from './Button';
 import { reclaimService } from '../services/reclaimService';
-import { createUserWithProofs } from '../services/userService';
+import createUserWithProofs from '../services/userService';
 
-export function VerifyAndStakeButton() {
+export default function VerifyAndStakeButton() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [status, setStatus] = useState('');
   const [error, setError] = useState<string | null>(null);

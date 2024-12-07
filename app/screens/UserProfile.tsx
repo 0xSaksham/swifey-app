@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { ConnectionButton } from '../components/ConnectionButton';
 
-export function UserProfile() {
+export default function UserProfile() {
   const targetUser = {
     id: "target-user-id",
     wallet: "target-wallet-address",
@@ -37,4 +37,4 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 16,
   },
-}); 
+});

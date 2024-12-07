@@ -1,4 +1,3 @@
-import { useState } from "react";
 import reclaimService from "../services/reclaimService";
 import type {
   VerificationRequest,
@@ -10,7 +9,7 @@ export function useVerification() {
   const [error, setError] = useState<string | null>(null);
 
   const startVerification = async (
-    request: VerificationRequest
+    request: VerificationRequest,
   ): Promise<VerificationResult> => {
     setIsVerifying(true);
     setError(null);
@@ -33,7 +32,7 @@ export function useVerification() {
               success: false,
               error: error.message,
             });
-          }
+          },
         );
       });
     } catch (err) {

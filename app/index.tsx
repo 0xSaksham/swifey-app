@@ -2,7 +2,7 @@ import { Text, View, StyleSheet, Image, Pressable } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { Link } from "expo-router";
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { VerifyAndStakeButton } from './components/VerifyAndStakeButton';
+import VerifyAndStakeButton from './components/VerifyAndStakeButton';
 
 export default function App() {
   return (

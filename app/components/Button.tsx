@@ -14,7 +14,7 @@ interface ButtonProps {
   disabled?: boolean;
 }
 
-export function Button({
+function Button({
   title,
   onPress,
   style,
@@ -50,3 +50,5 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
 });
+
+export default Button;

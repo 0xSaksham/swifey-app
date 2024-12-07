@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 import { Button } from './Button';
-import { WalletService } from '../services/walletService';
+import WalletService from '../services/walletService';
 import { useWallet } from '../context/WalletContext';
 
 interface StakingModalProps {
@@ -12,7 +12,7 @@ interface StakingModalProps {
   onStakeComplete: () => void;
 }
 
-export function StakingModal({
+export default function StakingModal({
   visible,
   onClose,
   targetUserId,
@@ -148,4 +148,4 @@ const styles = StyleSheet.create({
     color: '#333',
     fontWeight: 'bold',
   },
-}); 
+});
